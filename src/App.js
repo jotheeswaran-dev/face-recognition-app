@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import ImageUrl from './components/ImageUrl';
+import ImageUpload from './components/ImageUpload';
 import './App.css';
 
-function App() {
+const App = () => {
+
+  const [isUploadFromDevice, setIsUploadFromDevice] = useState(false);
+
+  const handleIsUploadFromDevice = () => {
+    setIsUploadFromDevice(!isUploadFromDevice)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1 className='header'>Face Recognition App</h1>
+      <div className='container'>
+        <div className='sub-container'>
+          <h2 className='sub-header'>Try it out!</h2>
+          {isUploadFromDevice ? <ImageUpload/> : <ImageUrl/>}
+          {isUploadFromDevice ? <p className='url-upload-toggle' onClick={handleIsUploadFromDevice}>Or enter url ?</p> : <p className='url-upload-toggle' onClick={handleIsUploadFromDevice}>Or upload from device ?</p>}
+        </div>
+      </div>
     </div>
   );
 }
