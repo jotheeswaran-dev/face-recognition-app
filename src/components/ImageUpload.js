@@ -60,7 +60,7 @@ const ImageUpload = () => {
                 <div>
                   <div className='file-input'>
                     <input type="file" id="file" className='file' accept=".jpg,.jpeg,.png" onChange={handleUpload}/>
-                    <label for="file">Select file</label>
+                    <label htmlFor="file">Select file</label>
                   </div>
                   <button className={file.name ? 'preview-btn' : 'disabled-preview-btn'} type="button" onClick={handlePreview}>PREVIEW</button><br/>
                   <button className='submit-btn' type="button" onClick={handleSubmit}>SUBMIT</button>
