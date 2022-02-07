@@ -3,16 +3,12 @@
     padding: 0px;
 }
 
-body{
-    text-align: center;
-}
-
 .header{
-    background-color: #0F2557;
-    color: #FFFFFF;
-    text-align: center;
     height: 70px;
+    text-align: center;
     line-height: 70px;
+    color: #FFFFFF;
+    background-color: #0F2557;
 }
 
 .container{
@@ -23,20 +19,22 @@ body{
 
 .sub-container{
     width:90%;
-    margin-top: 60px;
+    margin: 60px;
     padding: 16px;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
 .sub-header{
-    color: #0F2557;
     margin-top: 16px;
+    text-align: center;
+    color: #0F2557;
 }
 
 .url-upload-toggle{
-    margin: 16px;
-    color: #0F2557;
+    margin-top: 25px;
+    text-align: center;
     font-weight: bold;
+    color: #0F2557;
     cursor: pointer;
 }
 
