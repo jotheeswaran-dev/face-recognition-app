@@ -41,7 +41,7 @@ const ImageUrl = () => {
         baseURL: "https://faceapilearning.cognitiveservices.azure.com",
         timeout: 50000,
         headers: {
-          "Ocp-Apim-Subscription-Key": "ea88add05f4546258d17da1ded6db304",
+          "Ocp-Apim-Subscription-Key": "< AZURE SUSCRIPTION KEY >",
           "Content-Type": "application/json"
         },
         params: {
