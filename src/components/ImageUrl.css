@@ -62,5 +62,21 @@ button:hover{
 
 .output-container{
     margin-top: 16px;
+}
+
+.center-output-image{
     position: relative;
+}
+
+.description{
+    margin: 8px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.element{
+    margin: 16px;
+    padding: 8px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
 }

@@ -17,7 +17,11 @@ const ImageUrl = () => {
       left: `${item.faceRectangle.left}px`,
       width: `${item.faceRectangle.width}px`,
       height: `${item.faceRectangle.height}px`,
-      border: '2px solid #BA0B93'
+      border: '2px solid #BA0B93',
+      textAlign: 'center',
+      color: 'white',
+      fontSize: '20px',
+      fontWeight: 'bold'
     });
   }
 
@@ -37,16 +41,14 @@ const ImageUrl = () => {
         baseURL: "https://faceapilearning.cognitiveservices.azure.com",
         timeout: 50000,
         headers: {
-          "Ocp-Apim-Subscription-Key": "< AZURE-SUSCRIPTION-KEY >",
+          "Ocp-Apim-Subscription-Key": "ea88add05f4546258d17da1ded6db304",
           "Content-Type": "application/json"
         },
         params: {
           returnFaceId: true,
           returnFaceLandmarks: false,
-          returnFaceAttributes: "mask",
-          recognitionModel: "recognition_04",
-          returnRecognitionModel: false,
-          detectionModel: "detection_03"
+          returnFaceAttributes: "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise",
+          detectionModel: "detection_01"
         }
       });
       const response = await instance.post(
@@ -62,6 +64,7 @@ const ImageUrl = () => {
     }
     catch (err) {
       console.log(err.response.data);
+      window.alert("An error occured");
     }
   }
 
@@ -94,19 +97,40 @@ const ImageUrl = () => {
         </div>
       }
       {(outputImage) &&
-        <div className='center'>
-            <div className='output-container'>
-              <img src={image} alt="output from azure" />
-              {data && data.map(item => {
-                return (
-                  <div style={faceRectangleStyle(item)}></div>
-                )
-              })
-              }
-              <div className='center'>
-                <button className='back-btn' type="button" onClick={handleBack}>BACK</button>
+        <div className="center">
+          <div className='output-container'>
+            <div className="center">
+              <div className="center-output-image">
+                <img src={image} alt="output from azure" />
+                {data && data.map(item => {
+                  return (
+                    <div key={item.faceId} style={faceRectangleStyle(item)}>{data.indexOf(item) + 1}</div>
+                  )
+                })
+                }
               </div>
             </div>
+            {data &&
+              <div className="description">
+                {
+                  data.map(item => {
+                    return (
+
+                      <div key={item.faceId} className="element">
+                        <p style={{ textAlign: 'center' }}>{data.indexOf(item) + 1}</p>
+                        <li>Gender: {item.faceAttributes.gender}</li>
+                        <li>Age: {item.faceAttributes.age}</li>
+                        <li>Glasses: {item.faceAttributes.glasses}</li>
+                      </div>
+                    )
+                  })
+                }
+              </div>
+            }
+            <div className='center'>
+              <button className='back-btn' type="button" onClick={handleBack}>BACK</button>
+            </div>
+          </div>
         </div>
       }
     </div>
