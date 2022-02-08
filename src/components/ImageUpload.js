@@ -81,7 +81,7 @@ const ImageUpload = () => {
         <div className='center'>
           <div>
             <div className='file-input'>
-              <input type="file" id="file" className='file' accept=".jpg,.jpeg,.png" onChange={handleUpload} />
+              <input type="file" id="file" name="file" className='file' accept=".jpg,.jpeg,.png" onChange={handleUpload} />
               <label htmlFor="file">Select file</label>
             </div>
             <button className={file.name ? 'preview-btn' : 'disabled-preview-btn'} type="button" onClick={handlePreview}>PREVIEW</button>
@@ -115,7 +115,7 @@ const ImageUpload = () => {
                 }
               </div>
             </div>
-            {data &&
+            {data.length > 0 ?
               <div className="description">
                 {
                   data.map(item => {
@@ -129,7 +129,7 @@ const ImageUpload = () => {
                     )
                   })
                 }
-              </div>
+              </div>:<p style={{textAlign: 'center', color: 'red'}}>No face detected</p>
             }
             <div className='center'>
               <button className='back-btn' type="button" onClick={handleBack}>BACK</button>

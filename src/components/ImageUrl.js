@@ -4,7 +4,7 @@ import "./ImageUrl.css";
 
 const ImageUrl = () => {
 
-  const [data, setData] = useState()
+  const [data, setData] = useState([])
   const [image, setImage] = useState("");
 
   const [previewImage, setPreviewImage] = useState(false);
@@ -110,7 +110,7 @@ const ImageUrl = () => {
                 }
               </div>
             </div>
-            {data &&
+            {data.length > 0 ?
               <div className="description">
                 {
                   data.map(item => {
@@ -125,7 +125,7 @@ const ImageUrl = () => {
                     )
                   })
                 }
-              </div>
+              </div>:<p style={{textAlign: 'center', color: 'red'}}>No face detected</p>
             }
             <div className='center'>
               <button className='back-btn' type="button" onClick={handleBack}>BACK</button>
